@@ -1,0 +1,30 @@
+{
+  "proyecto": "citasalud-agenda",
+  "version": "1.0-SNAPSHOT",
+  "commit": "—",
+  "fecha": "2026-07-05",
+  "feature": "001-reserva-cita-online",
+  "spec": "specs/001-reserva-cita-online/spec.md",
+  "tests": {
+    "passed": 39,
+    "total": 39,
+    "coverage": 95.3
+  },
+  "security": {
+    "critical": 0,
+    "high": 0,
+    "secrets": 0,
+    "hallazgos": []
+  },
+  "criteria": [
+    { "id": "FR-001", "status": "cumple", "evidencia": "MedicosControllerTest, ConsultarDisponibilidadUseCaseTest" },
+    { "id": "FR-002", "status": "cumple", "evidencia": "ConsultarDisponibilidadUseCaseTest, CitasControllerTest" },
+    { "id": "FR-003", "status": "cumple", "evidencia": "CitasControllerTest, ReservarCitaUseCaseTest" },
+    { "id": "FR-004", "status": "cumple", "evidencia": "ReservarCitaIntegrationTest, ConcurrencyTest (reserva atómica, sin doble reserva)" },
+    { "id": "FR-005", "status": "cumple", "evidencia": "WhatsAppNotificationTest, ReservarCitaUseCaseTest" },
+    { "id": "FR-006", "status": "cumple", "evidencia": "ReservarCitaUseCaseTest, ConcurrencyTest, features/reserva_cita.feature" },
+    { "id": "FR-007", "status": "cumple", "evidencia": "ReservarCitaIntegrationTest" },
+    { "id": "FR-008", "status": "cumple", "evidencia": "WhatsAppNotificationTest" },
+    { "id": "FR-009", "status": "cumple", "evidencia": "ConsultarDisponibilidadUseCaseTest" }
+  ]
+}

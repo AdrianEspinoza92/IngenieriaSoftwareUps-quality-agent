@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ReservarCitaUseCaseImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">citasalud2</a> &gt; <a href="index.source.html" class="el_package">org.citasalud.application.usecase</a> &gt; <span class="el_source">ReservarCitaUseCaseImpl.java</span></div><h1>ReservarCitaUseCaseImpl.java</h1><pre class="source lang-java linenums">package org.citasalud.application.usecase;
+
+import org.citasalud.domain.exception.FranjaOcupadaException;
+import org.citasalud.domain.exception.RecursoNoEncontradoException;
+import org.citasalud.domain.model.*;
+import org.citasalud.domain.port.in.ReservarCitaUseCase;
+import org.citasalud.domain.port.out.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.UUID;
+
+public class ReservarCitaUseCaseImpl implements ReservarCitaUseCase {
+
+<span class="fc" id="L19">    private static final Logger log = LoggerFactory.getLogger(ReservarCitaUseCaseImpl.class);</span>
+
+    private final FranjaHorariaRepositoryPort franjaRepo;
+    private final CitaRepositoryPort citaRepo;
+    private final MedicoRepositoryPort medicoRepo;
+    private final PacienteRepositoryPort pacienteRepo;
+    private final NotificacionWhatsAppPort notificacionPort;
+
+    public ReservarCitaUseCaseImpl(FranjaHorariaRepositoryPort franjaRepo,
+                                    CitaRepositoryPort citaRepo,
+                                    MedicoRepositoryPort medicoRepo,
+                                    PacienteRepositoryPort pacienteRepo,
+<span class="fc" id="L31">                                    NotificacionWhatsAppPort notificacionPort) {</span>
+<span class="fc" id="L32">        this.franjaRepo = franjaRepo;</span>
+<span class="fc" id="L33">        this.citaRepo = citaRepo;</span>
+<span class="fc" id="L34">        this.medicoRepo = medicoRepo;</span>
+<span class="fc" id="L35">        this.pacienteRepo = pacienteRepo;</span>
+<span class="fc" id="L36">        this.notificacionPort = notificacionPort;</span>
+<span class="fc" id="L37">    }</span>
+
+    @Override
+    @Transactional
+    public Cita reservar(UUID pacienteId, UUID medicoId, UUID franjaHorariaId, LocalDate fecha) {
+<span class="fc" id="L42">        FranjaHoraria franja = franjaRepo.findByIdForUpdate(franjaHorariaId)</span>
+<span class="fc" id="L43">                .orElseThrow(() -&gt; new RecursoNoEncontradoException(&quot;FranjaHoraria&quot;, franjaHorariaId));</span>
+
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        if (!franja.estaDisponible()) {</span>
+<span class="fc" id="L46">            List&lt;FranjaHoraria&gt; alternativas = franjaRepo.findByMedicoIdAndFecha(franja.getMedicoId(), franja.getFecha());</span>
+<span class="fc" id="L47">            throw new FranjaOcupadaException(franjaHorariaId, alternativas);</span>
+        }
+
+<span class="fc" id="L50">        Medico medico = medicoRepo.findById(medicoId)</span>
+<span class="pc" id="L51">                .orElseThrow(() -&gt; new RecursoNoEncontradoException(&quot;Medico&quot;, medicoId));</span>
+
+<span class="fc" id="L53">        Paciente paciente = pacienteRepo.findById(pacienteId)</span>
+<span class="pc" id="L54">                .orElseThrow(() -&gt; new RecursoNoEncontradoException(&quot;Paciente&quot;, pacienteId));</span>
+
+<span class="fc" id="L56">        franja.ocupar();</span>
+<span class="fc" id="L57">        franjaRepo.save(franja);</span>
+
+<span class="fc" id="L59">        String numeroReferencia = generarNumeroReferencia(fecha);</span>
+<span class="fc" id="L60">        Cita cita = new Cita(UUID.randomUUID(), pacienteId, medicoId, franjaHorariaId,</span>
+<span class="fc" id="L61">                numeroReferencia, EstadoCita.CONFIRMADA, LocalDateTime.now());</span>
+<span class="fc" id="L62">        Cita citaGuardada = citaRepo.save(cita);</span>
+
+        try {
+<span class="fc" id="L65">            notificacionPort.enviarConfirmacion(citaGuardada, medico, franja, paciente);</span>
+<span class="fc" id="L66">        } catch (Exception e) {</span>
+<span class="fc" id="L67">            log.warn(&quot;Notificación WhatsApp falló para cita {}: {}&quot;, citaGuardada.getId(), e.getMessage());</span>
+<span class="fc" id="L68">        }</span>
+
+<span class="fc" id="L70">        return citaGuardada;</span>
+    }
+
+    @Override
+    public Cita buscarPorId(UUID citaId) {
+<span class="nc" id="L75">        return citaRepo.findById(citaId)</span>
+<span class="nc" id="L76">                .orElseThrow(() -&gt; new RecursoNoEncontradoException(&quot;Cita&quot;, citaId));</span>
+    }
+
+    private String generarNumeroReferencia(LocalDate fecha) {
+<span class="fc" id="L80">        long secuencial = citaRepo.countAll() + 1;</span>
+<span class="fc" id="L81">        return String.format(&quot;CIT-%d-%05d&quot;, fecha.getYear(), secuencial);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

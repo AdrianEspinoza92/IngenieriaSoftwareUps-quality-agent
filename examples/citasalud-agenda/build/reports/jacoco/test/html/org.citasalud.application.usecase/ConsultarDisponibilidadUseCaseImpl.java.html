@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ConsultarDisponibilidadUseCaseImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">citasalud2</a> &gt; <a href="index.source.html" class="el_package">org.citasalud.application.usecase</a> &gt; <span class="el_source">ConsultarDisponibilidadUseCaseImpl.java</span></div><h1>ConsultarDisponibilidadUseCaseImpl.java</h1><pre class="source lang-java linenums">package org.citasalud.application.usecase;
+
+import org.citasalud.domain.model.FranjaHoraria;
+import org.citasalud.domain.model.Medico;
+import org.citasalud.domain.port.in.ConsultarDisponibilidadUseCase;
+import org.citasalud.domain.port.out.FranjaHorariaRepositoryPort;
+import org.citasalud.domain.port.out.MedicoRepositoryPort;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.UUID;
+
+public class ConsultarDisponibilidadUseCaseImpl implements ConsultarDisponibilidadUseCase {
+
+    private final MedicoRepositoryPort medicoRepo;
+    private final FranjaHorariaRepositoryPort franjaRepo;
+
+    public ConsultarDisponibilidadUseCaseImpl(MedicoRepositoryPort medicoRepo,
+<span class="fc" id="L19">                                               FranjaHorariaRepositoryPort franjaRepo) {</span>
+<span class="fc" id="L20">        this.medicoRepo = medicoRepo;</span>
+<span class="fc" id="L21">        this.franjaRepo = franjaRepo;</span>
+<span class="fc" id="L22">    }</span>
+
+    @Override
+    public List&lt;Medico&gt; listarMedicos() {
+<span class="fc" id="L26">        return medicoRepo.findAll();</span>
+    }
+
+    @Override
+    public List&lt;FranjaHoraria&gt; consultarDisponibilidad(UUID medicoId, LocalDate fecha) {
+<span class="fc" id="L31">        return franjaRepo.findByMedicoIdAndFecha(medicoId, fecha);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

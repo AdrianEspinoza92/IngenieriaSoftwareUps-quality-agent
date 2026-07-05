@@ -1,0 +1,9 @@
+package org.citasalud.infrastructure.persistence.repository;
+
+import org.citasalud.infrastructure.persistence.entity.PacienteEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.UUID;
+
+public interface PacienteJpaRepository extends JpaRepository<PacienteEntity, UUID> {
+}

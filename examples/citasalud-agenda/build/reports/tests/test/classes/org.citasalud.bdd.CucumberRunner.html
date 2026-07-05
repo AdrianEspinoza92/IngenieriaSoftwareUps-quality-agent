@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - CucumberRunner</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>CucumberRunner</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/org.citasalud.bdd.html">org.citasalud.bdd</a> &gt; CucumberRunner</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">3</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">3.850s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">Consulta de disponibilidad del médico</td>
+<td class="success">0.028s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Intento de reserva en franja ya ocupada</td>
+<td class="success">0.022s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Reserva exitosa de cita en franja disponible</td>
+<td class="success">3.800s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>12:19:04.259 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [org.citasalud.bdd.CucumberSpringConfig]: CucumberSpringConfig does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+12:19:04.327 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration org.citasalud.CItaSaludApplication for test class org.citasalud.bdd.CucumberSpringConfig
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.5)
+
+2026-06-27T12:19:04.599-05:00  INFO 45894 --- [    Test worker] org.citasalud.bdd.CucumberSpringConfig   : Starting CucumberSpringConfig using Java 17.0.19 with PID 45894 (started by adrianespinoza in /Users/adrianespinoza/Documents/UPS/IngenieriaSoftware/Unidad3/Practica/citasalud2)
+2026-06-27T12:19:04.600-05:00 DEBUG 45894 --- [    Test worker] org.citasalud.bdd.CucumberSpringConfig   : Running with Spring Boot v3.2.5, Spring v6.1.6
+2026-06-27T12:19:04.600-05:00  INFO 45894 --- [    Test worker] org.citasalud.bdd.CucumberSpringConfig   : The following 1 profile is active: &quot;test&quot;
+2026-06-27T12:19:05.048-05:00  INFO 45894 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-27T12:19:05.084-05:00  INFO 45894 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 31 ms. Found 5 JPA repository interfaces.
+2026-06-27T12:19:05.276-05:00 DEBUG 45894 --- [    Test worker] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-06-27T12:19:05.276-05:00  INFO 45894 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-27T12:19:05.444-05:00  INFO 45894 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:citasaludtest user=SA
+2026-06-27T12:19:05.445-05:00  INFO 45894 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-27T12:19:05.448-05:00 DEBUG 45894 --- [    Test worker] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from class path resource [db/schema.sql]
+2026-06-27T12:19:05.456-05:00 DEBUG 45894 --- [    Test worker] o.s.jdbc.datasource.init.ScriptUtils     : 0 returned as update count for SQL: CREATE TABLE IF NOT EXISTS medicos ( id UUID PRIMARY KEY, nombre VARCHAR(200) NOT NULL, especialidad VARCHAR(100) NOT NULL )
+2026-06-27T12:19:05.456-05:00 DEBUG 45894 --- [    Test worker] o.s.jdbc.datasource.init.ScriptUtils     : 0 returned as update count for SQL: CREATE TABLE IF NOT EXISTS pacientes ( id UUID PRIMARY KEY, nombre VARCHAR(200) NOT NULL, numero_whatsapp VARCHAR(20) NOT NULL )
+2026-06-27T12:19:05.463-05:00 DEBUG 45894 --- [    Test worker] o.s.jdbc.datasource.init.ScriptUtils     : 0 returned as update count for SQL: CREATE TABLE IF NOT EXISTS franjas_horarias ( id UUID PRIMARY KEY, medico_id UUID NOT NULL REFERENCES medicos(id), fecha DATE NOT NULL, hora_inicio TIME NOT NULL, hora_fin TIME NOT NULL, estado VARCHAR(20) NOT NULL DEFAULT 'DISPONIBLE', version BIGINT NOT NULL DEFAULT 0, CONSTRAINT chk_estado_franja CHECK (estado IN ('DISPONIBLE', 'OCUPADA')) )
+2026-06-27T12:19:05.465-05:00 DEBUG 45894 --- [    Test worker] o.s.jdbc.datasource.init.ScriptUtils     : 0 returned as update count for SQL: CREATE TABLE IF NOT EXISTS citas ( id UUID PRIMARY KEY, paciente_id UUID NOT NULL REFERENCES pacientes(id), medico_id UUID NOT NULL REFERENCES medicos(id), franja_horaria_id UUID NOT NULL REFERENCES franjas_horarias(id), numero_referencia VARCHAR(50) NOT NULL UNIQUE, estado VARCHAR(20) NOT NULL DEFAULT 'CONFIRMADA', creada_en TIMESTAMP NOT NULL, CONSTRAINT chk_estado_cita CHECK (estado IN ('CONFIRMADA', 'CANCELADA', 'COMPLETADA')) )
+2026-06-27T12:19:05.467-05:00 DEBUG 45894 --- [    Test worker] o.s.jdbc.datasource.init.ScriptUtils     : 0 returned as update count for SQL: CREATE TABLE IF NOT EXISTS notificaciones_whatsapp ( id UUID PRIMARY KEY, cita_id UUID NOT NULL REFERENCES citas(id), destinatario VARCHAR(20), estado VARCHAR(20) NOT NULL DEFAULT 'PENDIENTE', intentos INT NOT NULL DEFAULT 0, ultimo_intento TIMESTAMP, mensaje TEXT, CONSTRAINT chk_estado_notificacion CHECK (estado IN ('PENDIENTE', 'ENVIADA', 'FALLIDA')) )
+2026-06-27T12:19:05.468-05:00 DEBUG 45894 --- [    Test worker] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from class path resource [db/schema.sql] in 19 ms.
+2026-06-27T12:19:05.470-05:00 DEBUG 45894 --- [    Test worker] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-06-27T12:19:05.470-05:00 DEBUG 45894 --- [    Test worker] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from class path resource [db/data-test.sql]
+2026-06-27T12:19:05.472-05:00 DEBUG 45894 --- [    Test worker] o.s.jdbc.datasource.init.ScriptUtils     : 1 returned as update count for SQL: INSERT INTO medicos (id, nombre, especialidad) VALUES ('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', 'Dr. Test Médico', 'Medicina General')
+2026-06-27T12:19:05.472-05:00 DEBUG 45894 --- [    Test worker] o.s.jdbc.datasource.init.ScriptUtils     : 1 returned as update count for SQL: INSERT INTO pacientes (id, nombre, numero_whatsapp) VALUES ('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb', 'Paciente Test', '+593999000001')
+2026-06-27T12:19:05.474-05:00 DEBUG 45894 --- [    Test worker] o.s.jdbc.datasource.init.ScriptUtils     : 5 returned as update count for SQL: INSERT INTO franjas_horarias (id, medico_id, fecha, hora_inicio, hora_fin, estado, version) VALUES ('cccccccc-cccc-cccc-cccc-cccccccccc01', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', '2026-07-15', '09:00', '09:30', 'DISPONIBLE', 0), ('cccccccc-cccc-cccc-cccc-cccccccccc02', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', '2026-07-15', '09:30', '10:00', 'DISPONIBLE', 0), ('cccccccc-cccc-cccc-cccc-cccccccccc03', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', '2026-07-15', '10:00', '10:30', 'OCUPADA', 0), ('cccccccc-cccc-cccc-cccc-cccccccccc04', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', '2026-07-15', '10:30', '11:00', 'DISPONIBLE', 0), ('cccccccc-cccc-cccc-cccc-cccccccccc05', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', '2026-07-15', '11:00', '11:30', 'DISPONIBLE', 0)
+2026-06-27T12:19:05.474-05:00 DEBUG 45894 --- [    Test worker] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from class path resource [db/data-test.sql] in 4 ms.
+2026-06-27T12:19:05.530-05:00  INFO 45894 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-27T12:19:05.730-05:00  INFO 45894 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-06-27T12:19:05.763-05:00  INFO 45894 --- [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-06-27T12:19:05.984-05:00  INFO 45894 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-27T12:19:06.049-05:00  WARN 45894 --- [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-27T12:19:06.650-05:00  INFO 45894 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-27T12:19:06.652-05:00  INFO 45894 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-27T12:19:06.789-05:00  INFO 45894 --- [    Test worker] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-27T12:19:07.204-05:00  WARN 45894 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-27T12:19:07.437-05:00  INFO 45894 --- [    Test worker] org.citasalud.bdd.CucumberSpringConfig   : Started CucumberSpringConfig in 3.019 seconds (process running for 4.15)
+
+@US1
+Escenario: Reserva exitosa de cita en franja disponible                                                                                                       ?[90m# features/reserva_cita.feature:12?[0m
+  ?[32mDado ?[0m?[32mel sistema tiene un médico con id ?[0m?[32m?[1m&quot;aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa&quot;?[0m                                                                               ?[90m# org.citasalud.bdd.ReservaCitaSteps.elSistemaTieneUnMedicoConId(java.lang.String)?[0m
+  ?[32mY ?[0m?[32mel sistema tiene un paciente con id ?[0m?[32m?[1m&quot;bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb&quot;?[0m                                                                                ?[90m# org.citasalud.bdd.ReservaCitaSteps.elSistemaTieneUnPacienteConId(java.lang.String)?[0m
+  ?[32mDado ?[0m?[32mla franja horaria ?[0m?[32m?[1m&quot;cccccccc-cccc-cccc-cccc-cccccccccc01&quot;?[0m?[32m está disponible?[0m                                                                               ?[90m# org.citasalud.bdd.ReservaCitaSteps.laFranjaEstaDisponible(java.lang.String)?[0m
+Hibernate: select fhe1_0.id,fhe1_0.estado,fhe1_0.fecha,fhe1_0.hora_fin,fhe1_0.hora_inicio,fhe1_0.medico_id,fhe1_0.version from franjas_horarias fhe1_0 where fhe1_0.id=?
+Hibernate: select me1_0.id,me1_0.especialidad,me1_0.nombre from medicos me1_0 where me1_0.id=?
+Hibernate: select pe1_0.id,pe1_0.nombre,pe1_0.numero_whatsapp from pacientes pe1_0 where pe1_0.id=?
+Hibernate: select count(*) from citas ce1_0
+Hibernate: select ce1_0.id,ce1_0.creada_en,ce1_0.estado,ce1_0.franja_horaria_id,ce1_0.medico_id,ce1_0.numero_referencia,ce1_0.paciente_id from citas ce1_0 where ce1_0.id=?
+2026-06-27T12:19:07.949-05:00  INFO 45894 --- [    Test worker] o.c.i.n.WhatsAppNotificationAdapter      : WhatsApp stub: enviando a +593999000001 — Cita confirmada. Médico: Dr. Test Médico (Medicina General). Fecha: 2026-07-15, Hora: 09:00-09:30. Referencia: CIT-2026-00001.
+Hibernate: select nwae1_0.id,nwae1_0.cita_id,nwae1_0.destinatario,nwae1_0.estado,nwae1_0.intentos,nwae1_0.mensaje,nwae1_0.ultimo_intento from notificaciones_whatsapp nwae1_0 where nwae1_0.id=?
+Hibernate: insert into citas (creada_en,estado,franja_horaria_id,medico_id,numero_referencia,paciente_id,id) values (?,?,?,?,?,?,?)
+Hibernate: insert into notificaciones_whatsapp (cita_id,destinatario,estado,intentos,mensaje,ultimo_intento,id) values (?,?,?,?,?,?,?)
+Hibernate: update franjas_horarias set estado=?,fecha=?,hora_fin=?,hora_inicio=?,medico_id=?,version=? where id=? and version=?
+Hibernate: select version as version_ from franjas_horarias where id=?
+  ?[32mCuando ?[0m?[32mel paciente reserva la franja ?[0m?[32m?[1m&quot;cccccccc-cccc-cccc-cccc-cccccccccc01&quot;?[0m?[32m con el médico ?[0m?[32m?[1m&quot;aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa&quot;?[0m?[32m para la fecha ?[0m?[32m?[1m&quot;2026-07-15&quot;?[0m ?[90m# org.citasalud.bdd.ReservaCitaSteps.elPacienteReservaLaFranja(java.lang.String,java.lang.String,java.lang.String)?[0m
+  ?[32mEntonces ?[0m?[32mla cita queda registrada con estado ?[0m?[32m?[1m&quot;CONFIRMADA&quot;?[0m                                                                                                   ?[90m# org.citasalud.bdd.ReservaCitaSteps.laCitaQuedaRegistradaConEstado(java.lang.String)?[0m
+  ?[32mY ?[0m?[32mla franja horaria ?[0m?[32m?[1m&quot;cccccccc-cccc-cccc-cccc-cccccccccc01&quot;?[0m?[32m pasa a estado ?[0m?[32m?[1m&quot;OCUPADA&quot;?[0m                                                                          ?[90m# org.citasalud.bdd.ReservaCitaSteps.laFranjaHorariaPasaAEstado(java.lang.String,java.lang.String)?[0m
+  ?[32mY ?[0m?[32mel paciente recibe una notificación de confirmación por WhatsApp?[0m                                                                                          ?[90m# org.citasalud.bdd.ReservaCitaSteps.elPacienteRecibeNotificacion()?[0m
+2026-06-27T12:19:08.007-05:00  INFO 45894 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.citasalud.bdd.CucumberSpringConfig]: CucumberSpringConfig does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-06-27T12:19:08.008-05:00  INFO 45894 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.citasalud.CItaSaludApplication for test class org.citasalud.bdd.CucumberSpringConfig
+
+@US2
+Escenario: Intento de reserva en franja ya ocupada                                                                                                                     ?[90m# features/reserva_cita.feature:20?[0m
+  ?[32mDado ?[0m?[32mel sistema tiene un médico con id ?[0m?[32m?[1m&quot;aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa&quot;?[0m                                                                                        ?[90m# org.citasalud.bdd.ReservaCitaSteps.elSistemaTieneUnMedicoConId(java.lang.String)?[0m
+  ?[32mY ?[0m?[32mel sistema tiene un paciente con id ?[0m?[32m?[1m&quot;bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb&quot;?[0m                                                                                         ?[90m# org.citasalud.bdd.ReservaCitaSteps.elSistemaTieneUnPacienteConId(java.lang.String)?[0m
+  ?[32mDado ?[0m?[32mla franja horaria ?[0m?[32m?[1m&quot;cccccccc-cccc-cccc-cccc-cccccccccc03&quot;?[0m?[32m está ocupada?[0m                                                                                           ?[90m# org.citasalud.bdd.ReservaCitaSteps.laFranjaEstaOcupada(java.lang.String)?[0m
+Hibernate: select fhe1_0.id,fhe1_0.estado,fhe1_0.fecha,fhe1_0.hora_fin,fhe1_0.hora_inicio,fhe1_0.medico_id,fhe1_0.version from franjas_horarias fhe1_0 where fhe1_0.id=?
+Hibernate: select fhe1_0.id,fhe1_0.estado,fhe1_0.fecha,fhe1_0.hora_fin,fhe1_0.hora_inicio,fhe1_0.medico_id,fhe1_0.version from franjas_horarias fhe1_0 where fhe1_0.medico_id=? and fhe1_0.fecha=?
+  ?[32mCuando ?[0m?[32mel paciente intenta reservar la franja ?[0m?[32m?[1m&quot;cccccccc-cccc-cccc-cccc-cccccccccc03&quot;?[0m?[32m con el médico ?[0m?[32m?[1m&quot;aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa&quot;?[0m?[32m para la fecha ?[0m?[32m?[1m&quot;2026-07-15&quot;?[0m ?[90m# org.citasalud.bdd.ReservaCitaSteps.elPacienteIntentaReservarLaFranja(java.lang.String,java.lang.String,java.lang.String)?[0m
+  ?[32mEntonces ?[0m?[32mel sistema rechaza la reserva con código ?[0m?[32m?[1m&quot;FRANJA_OCUPADA&quot;?[0m                                                                                                   ?[90m# org.citasalud.bdd.ReservaCitaSteps.elSistemaRechazaLaReserva(java.lang.String)?[0m
+2026-06-27T12:19:08.029-05:00  INFO 45894 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.citasalud.bdd.CucumberSpringConfig]: CucumberSpringConfig does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-06-27T12:19:08.030-05:00  INFO 45894 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.citasalud.CItaSaludApplication for test class org.citasalud.bdd.CucumberSpringConfig
+
+@US3
+Escenario: Consulta de disponibilidad del médico                                                                             ?[90m# features/reserva_cita.feature:26?[0m
+  ?[32mDado ?[0m?[32mel sistema tiene un médico con id ?[0m?[32m?[1m&quot;aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa&quot;?[0m                                              ?[90m# org.citasalud.bdd.ReservaCitaSteps.elSistemaTieneUnMedicoConId(java.lang.String)?[0m
+  ?[32mY ?[0m?[32mel sistema tiene un paciente con id ?[0m?[32m?[1m&quot;bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb&quot;?[0m                                               ?[90m# org.citasalud.bdd.ReservaCitaSteps.elSistemaTieneUnPacienteConId(java.lang.String)?[0m
+  ?[32mDado ?[0m?[32mel médico ?[0m?[32m?[1m&quot;aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa&quot;?[0m?[32m tiene franjas para la fecha ?[0m?[32m?[1m&quot;2026-07-15&quot;?[0m                             ?[90m# org.citasalud.bdd.ReservaCitaSteps.elMedicoTieneFranjas(java.lang.String,java.lang.String)?[0m
+Hibernate: select fhe1_0.id,fhe1_0.estado,fhe1_0.fecha,fhe1_0.hora_fin,fhe1_0.hora_inicio,fhe1_0.medico_id,fhe1_0.version from franjas_horarias fhe1_0 where fhe1_0.medico_id=? and fhe1_0.fecha=?
+  ?[32mCuando ?[0m?[32mel paciente consulta la disponibilidad del médico ?[0m?[32m?[1m&quot;aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa&quot;?[0m?[32m para la fecha ?[0m?[32m?[1m&quot;2026-07-15&quot;?[0m ?[90m# org.citasalud.bdd.ReservaCitaSteps.elPacienteConsultaDisponibilidad(java.lang.String,java.lang.String)?[0m
+  ?[32mEntonces ?[0m?[32mel sistema retorna las franjas horarias con sus estados?[0m                                                           ?[90m# org.citasalud.bdd.ReservaCitaSteps.elSistemaRetornaLasFranjas()?[0m
+  ?[32mY ?[0m?[32mal menos una franja tiene estado ?[0m?[32m?[1m&quot;DISPONIBLE&quot;?[0m                                                                            ?[90m# org.citasalud.bdd.ReservaCitaSteps.alMenosUnaFranjaTieneEstado(java.lang.String)?[0m
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 8.10</a> at 27 jun. 2026 12:19:09</p>
+</div>
+</div>
+</body>
+</html>

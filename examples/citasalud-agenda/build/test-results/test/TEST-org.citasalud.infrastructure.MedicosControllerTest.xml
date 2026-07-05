@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.citasalud.infrastructure.MedicosControllerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-06-27T17:19:09" hostname="Adrians-MacBook.local" time="0.053">
+  <properties/>
+  <testcase name="listarMedicos_retornaListaJson()" classname="org.citasalud.infrastructure.MedicosControllerTest" time="0.015"/>
+  <testcase name="consultarDisponibilidad_retornaFranjasJson()" classname="org.citasalud.infrastructure.MedicosControllerTest" time="0.017"/>
+  <testcase name="listarMedicos_filtradoPorEspecialidad_retornaSoloCoincidentes()" classname="org.citasalud.infrastructure.MedicosControllerTest" time="0.019"/>
+  <system-out><![CDATA[2026-06-27T12:19:09.416-05:00  INFO 45894 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.citasalud.infrastructure.MedicosControllerTest]: MedicosControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-06-27T12:19:09.420-05:00  INFO 45894 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.citasalud.CItaSaludApplication for test class org.citasalud.infrastructure.MedicosControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.5)
+
+2026-06-27T12:19:09.441-05:00  INFO 45894 --- [    Test worker] o.c.i.MedicosControllerTest              : Starting MedicosControllerTest using Java 17.0.19 with PID 45894 (started by adrianespinoza in /Users/adrianespinoza/Documents/UPS/IngenieriaSoftware/Unidad3/Practica/citasalud2)
+2026-06-27T12:19:09.441-05:00 DEBUG 45894 --- [    Test worker] o.c.i.MedicosControllerTest              : Running with Spring Boot v3.2.5, Spring v6.1.6
+2026-06-27T12:19:09.441-05:00  INFO 45894 --- [    Test worker] o.c.i.MedicosControllerTest              : No active profile set, falling back to 1 default profile: "default"
+2026-06-27T12:19:09.612-05:00  INFO 45894 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-06-27T12:19:09.612-05:00  INFO 45894 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-06-27T12:19:09.613-05:00  INFO 45894 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-06-27T12:19:09.617-05:00  INFO 45894 --- [    Test worker] o.c.i.MedicosControllerTest              : Started MedicosControllerTest in 0.195 seconds (process running for 6.331)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
