@@ -1,30 +1,41 @@
 {
   "proyecto": "citasalud-agenda",
-  "version": "1.0-SNAPSHOT",
-  "commit": "—",
-  "fecha": "2026-07-05",
-  "feature": "001-reserva-cita-online",
-  "spec": "specs/001-reserva-cita-online/spec.md",
+  "version": "1.1.0",
+  "fecha": "2026-06-27",
+  "commit": "a1b2c3d",
+  "spec": "specs/001-agenda-citas/spec.md",
   "tests": {
-    "passed": 39,
-    "total": 39,
-    "coverage": 95.3
+    "comando": "./gradlew test jacocoTestReport",
+    "passed": 128,
+    "total": 130,
+    "coverage": 79.0,
+    "coverage_fuente": "build/reports/jacoco/test/jacocoTestReport.xml"
   },
   "security": {
+    "fuente": "Semgrep MCP (semgrep_scan) + grep de secretos",
     "critical": 0,
-    "high": 0,
+    "high": 1,
     "secrets": 0,
-    "hallazgos": []
+    "hallazgos": [
+      {
+        "severidad": "high",
+        "regla": "java.lang.security.audit.unsynchronized-collection-access",
+        "archivo": "AgendaService.java",
+        "linea": 24,
+        "nota": "acceso concurrente no sincronizado a 'reservas'; se reporta para triage (no bloquea por ser 'high')"
+      }
+    ]
   },
   "criteria": [
-    { "id": "FR-001", "status": "cumple", "evidencia": "MedicosControllerTest, ConsultarDisponibilidadUseCaseTest" },
-    { "id": "FR-002", "status": "cumple", "evidencia": "ConsultarDisponibilidadUseCaseTest, CitasControllerTest" },
-    { "id": "FR-003", "status": "cumple", "evidencia": "CitasControllerTest, ReservarCitaUseCaseTest" },
-    { "id": "FR-004", "status": "cumple", "evidencia": "ReservarCitaIntegrationTest, ConcurrencyTest (reserva atómica, sin doble reserva)" },
-    { "id": "FR-005", "status": "cumple", "evidencia": "WhatsAppNotificationTest, ReservarCitaUseCaseTest" },
-    { "id": "FR-006", "status": "cumple", "evidencia": "ReservarCitaUseCaseTest, ConcurrencyTest, features/reserva_cita.feature" },
-    { "id": "FR-007", "status": "cumple", "evidencia": "ReservarCitaIntegrationTest" },
-    { "id": "FR-008", "status": "cumple", "evidencia": "WhatsAppNotificationTest" },
-    { "id": "FR-009", "status": "cumple", "evidencia": "ConsultarDisponibilidadUseCaseTest" }
+    { "id": "FR-001", "fuente": "spec.md · FR-001 / User Story 1", "status": "cumple",
+      "evidencia": "prueba reservaFranjaLibre_ok PASA" },
+    { "id": "FR-002", "fuente": "spec.md · FR-002", "status": "cumple",
+      "evidencia": "prueba reservaOtraFranja_ok PASA" },
+    { "id": "FR-003", "fuente": "spec.md · FR-003 / User Story 2, escenario 1", "status": "cumple",
+      "evidencia": "prueba reservaFranjaOcupada_secuencial_rechaza PASA" },
+    { "id": "FR-005", "fuente": "spec.md · FR-005", "status": "cumple",
+      "evidencia": "ReservaController devuelve 409 CONFLICT ante FranjaOcupadaException" },
+    { "id": "FR-006", "fuente": "spec.md · FR-006 / User Story 2, escenario 2 (concurrencia)", "status": "incumple",
+      "evidencia": "no existe prueba para el caso concurrente; reservar() no controla concurrencia (AgendaService.java:24)" }
   ]
 }

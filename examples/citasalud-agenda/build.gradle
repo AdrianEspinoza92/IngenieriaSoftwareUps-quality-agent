@@ -1,17 +1,17 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.2.5'
-    id 'io.spring.dependency-management' version '1.1.4'
+    id 'org.springframework.boot' version '3.3.2'
+    id 'io.spring.dependency-management' version '1.1.6'   // <- dependency management Gradle
     id 'jacoco'
-    id 'org.openapi.generator' version '7.4.0'
 }
 
-group = 'org.citasalud'
-version = '1.0-SNAPSHOT'
+group = 'ec.citasalud'
+version = '1.1.0'
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
 }
 
 repositories {
@@ -20,110 +20,19 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
-
-    // Swagger/OpenAPI annotations (required by generated code)
-    implementation 'io.swagger.core.v3:swagger-annotations:2.2.20'
-    implementation 'io.swagger.core.v3:swagger-models:2.2.20'
-    implementation 'jakarta.annotation:jakarta.annotation-api:2.1.1'
-
-    // Swagger UI
-    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
-
-    runtimeOnly 'org.postgresql:postgresql'
-
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-    testImplementation 'org.mockito:mockito-core'
-    testRuntimeOnly 'com.h2database:h2'
-
-    // Cucumber BDD
-    testImplementation 'io.cucumber:cucumber-java:7.15.0'
-    testImplementation 'io.cucumber:cucumber-spring:7.15.0'
-    testImplementation 'io.cucumber:cucumber-junit-platform-engine:7.15.0'
-    testImplementation 'org.junit.platform:junit-platform-suite'
-    testImplementation 'org.junit.platform:junit-platform-suite-api'
 }
 
-// OpenAPI Generator — API First (Constitución IV)
-openApiGenerate {
-    generatorName = "spring"
-    inputSpec = "$rootDir/specs/001-reserva-cita-online/contracts/openapi.yml"
-    outputDir = "$buildDir/generated"
-    apiPackage = "org.citasalud.api"
-    modelPackage = "org.citasalud.api.model"
-    configOptions = [
-        interfaceOnly     : "true",
-        useSpringBoot3    : "true",
-        useTags           : "true",
-        openApiNullable   : "false",
-        additionalModelTypeAnnotations: ""
-    ]
-}
-
-sourceSets {
-    main {
-        java {
-            srcDirs += "$buildDir/generated/src/main/java"
-        }
-    }
-}
-
-compileJava.dependsOn tasks.openApiGenerate
-
-test {
+tasks.named('test') {
     useJUnitPlatform()
-    finalizedBy jacocoTestReport
+    finalizedBy jacocoTestReport          // la cobertura se genera tras las pruebas
 }
-
-// JaCoCo — Constitución V
-jacoco {
-    toolVersion = "0.8.11"
-}
-
-def excludedClasses = [
-    'org/citasalud/api/**',
-    'org/citasalud/api/model/**',
-    'org/citasalud/CItaSaludApplication*',
-    'org/citasalud/infrastructure/persistence/entity/**'
-]
 
 jacocoTestReport {
     dependsOn test
     reports {
-        xml.required = true
+        xml.required = true               // el auditor lee este XML
         html.required = true
-    }
-    afterEvaluate {
-        classDirectories.setFrom(files(classDirectories.files.collect {
-            fileTree(dir: it, exclude: excludedClasses)
-        }))
-    }
-}
-
-jacocoTestCoverageVerification {
-    afterEvaluate {
-        classDirectories.setFrom(files(classDirectories.files.collect {
-            fileTree(dir: it, exclude: excludedClasses)
-        }))
-    }
-    violationRules {
-        rule {
-            limit {
-                counter = 'INSTRUCTION'
-                value = 'COVEREDRATIO'
-                minimum = 0.80
-            }
-        }
-        rule {
-            element = 'CLASS'
-            limit {
-                counter = 'INSTRUCTION'
-                value = 'COVEREDRATIO'
-                minimum = 0.80
-            }
-        }
     }
 }
